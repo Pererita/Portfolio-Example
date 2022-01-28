@@ -154,12 +154,17 @@ section {
   padding: 0 20px;
 }
 
+.container__banner{
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 5rem;
+}
+
 .banner .content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-right: 10%;
 }
 
 .banner .content1 {
@@ -201,6 +206,7 @@ p {
 .dark p {
   color: var(--black);
 }
+
 
 .habilidades {
   position: absolute;
@@ -581,8 +587,58 @@ p {
 .dark .themeSwitch::after {
   content: "Cambiar a Modo Claro";
 }
+
+
+/*Preloader*/
+
+.preloader {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: #070707;
+  z-index: 100000000;
+}
+
+.preloader:before {
+  content: 'Cargando';
+  position: absolute;
+  font-size: 12em;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.03);
+}
+
+.counter {
+  position: relative;
+  color: #fff;
+  font-size: 16em;
+  font-weight: 700;
+  z-index: 1;
+}
+
+.preloader.active {
+  transform: translateY(-100vh);
+  transition: ease-in-out 2s;
+  transition-delay: 1s;
+}
+
+.counter:after {
+  content: '%';
+  font-size: 0.5em;
+}
+
+.hide {
+  opacity: 0;
+  transition: 1s;
+  pointer-events: none;
+}
+
 /*Responsive*/
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
   .themeSwitch {
     left: 20px;
   }
@@ -591,7 +647,8 @@ p {
   }
   .navigation.active {
     left: 0;
-    width: 100%;
+    width: 50%;
+    height: 50%;
   }
   .main {
     width: 100%;
@@ -608,6 +665,7 @@ p {
   .navigation ul {
     padding: 20px 20px;
   }
+
   .banner .imgBx {
     width: 250px;
     height: 250px;
@@ -642,9 +700,13 @@ p {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 860px) {
   .services .content {
     grid-template-columns: repeat(1, 1fr);
+  }
+  .navigation.active {
+    width: 50%;
+    height: 50%;
   }
   .project .content {
     grid-template-columns: repeat(1, 1fr);
@@ -661,52 +723,30 @@ p {
   .copyright {
     padding: 10px 20px;
   }
-}
-
-/*Preloader*/
-
-.preloader {
-    position: fixed;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    background: #070707;
-    z-index: 100000000;
-}
-
-.preloader:before {
-    content: 'Cargando';
-    position: absolute;
-    font-size: 12em;
-    font-weight: 900;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.03);
-}
-
-.counter {
-    position: relative;
-    color: #fff;
-    font-size: 16em;
-    font-weight: 700;
-    z-index: 1;
-}
-
-.preloader.active {
-    transform: translateY(-100vh);
-    transition: ease-in-out 2s;
-    transition-delay: 1s;
-}
-
-.counter:after {
+  .container__banner{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5rem;
+    padding: 20% 0 20%;
+  }
+  .banner .imgBx {
+    width: 230px;
+    height: 230px;
+  }
+  .habilidades{
+    display: none;
+  }
+  .preloader:before {
+    font-size: 3rem;
+  }
+  .counter {
+    font-size: 5rem;
+  }
+  .counter:after {
     content: '%';
-    font-size: 0.5em;
-}
-
-.hide {
-    opacity: 0;
-    transition: 1s;
-    pointer-events: none;
+    font-size: 3rem;
+  }
+ .toggle.active{
+   width: calc(100% - 50%);
+ }
 }
